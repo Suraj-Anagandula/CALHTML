@@ -1,4 +1,4 @@
- pipeline {
+pipeline {
     agent any
 
     stages {
@@ -20,10 +20,12 @@
                 sh 'docker build -t todo-app .'
             }
         }
-        stage('Deploy to Kubernetes') {
+
+        stage('Run Container') {
             steps {
-                sh 'kubectl apply -f deployment.yaml'
-                sh 'kubectl apply -f service.yaml'
+                sh 'docker stop todo-app || true'
+                sh 'docker rm todo-app || true'
+                sh 'docker run -d -p 3000:3000 --name todo-app todo-app'
             }
         }
     }
