@@ -20,12 +20,10 @@
                 sh 'docker build -t todo-app .'
             }
         }
-
-        stage('Run Container') {
+        stage('Deploy to Kubernetes') {
             steps {
-                sh 'docker stop todo-app || true'
-                sh 'docker rm todo-app || true'
-                sh 'docker run -d -p 3000:3000 --name todo-app todo-app'
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
             }
         }
     }
