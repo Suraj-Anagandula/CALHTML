@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: todo-app
-          image: todo-app:latest
+          image: surajanagandula/todo-app:latest
           ports:
             - containerPort: 3000
-          imagePullPolicy: Never
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "128Mi"
