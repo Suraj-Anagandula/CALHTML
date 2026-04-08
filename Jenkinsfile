@@ -30,6 +30,3 @@ pipeline {
         }
     }
 }
-
-
-this is my Jenkinsfile ,can you extend this 
